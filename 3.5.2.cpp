@@ -3,27 +3,17 @@ using namespace std;
 
 class Figure {
 protected:
-	int a, b, c,d, A, B, C,D;
 	int sides_count = 0;
 	string name;
 public:
-	
-	virtual string get_name() {return name;}
-	virtual int get_a() {return a;}
-	virtual int get_b() {return b;}
-	virtual int get_c() {return c;}
-	virtual int get_d() {return d;}
-	virtual int get_A() {return A;}
-	virtual int get_B() {return B;}
-	virtual int get_C() {return C;}
-	virtual int get_D() {return D;}
+	string get_name() {return name;}
 };
 
 class Triangle :public Figure {
 	int a, b, c, A, B, C;
 public:
 	Triangle(){}
-	string get_name() override {return name;}
+	string get_name() {return name;}
 	Triangle(string name1,int new_a, int new_b, int new_c, int new_A, int new_B, int new_C){
 		name = name1;
 		a = new_a;
@@ -33,12 +23,10 @@ public:
 		B = new_B;
 		C = new_C;
 	}
-	int get_a() override {return a;}
-	int get_b() override {return b;}
-	int get_c() override {return c;}
-	int get_A() override {return A;}
-	int get_B() override {return B;}
-	int get_C() override {return C;}
+	virtual void print_info() {
+		cout << get_name() << ":\nСтороны: a="<<a<<" b=" << b << " c=" << c
+		<<"\nУглы: A="<< A << " B=" << B <<" C=" << C << "\n\n";
+	}
 };
 
 class Right_Triangle:public Triangle {
@@ -57,12 +45,10 @@ public:
 	string get_name() {
 		return name;
 	}
-	int get_a() override { return a; }
-	int get_b() override { return b; }
-	int get_c() override { return c; }
-	int get_A() override { return A; }
-	int get_B() override { return B; }
-	int get_C() override { return C; }
+	void print_info() override{
+		cout << get_name() << ":\nСтороны: a=" << a << " b=" << b << " c=" << c<< 
+			"\nУглы: A=" << A << " B=" << B << " C=" << C << "\n\n";
+	}
 };
 
 class Isosceles_Triangle :public Triangle {
@@ -81,12 +67,10 @@ public:
 	string get_name() {
 		return name;
 	}
-	int get_a() override { return a; }
-	int get_b() override { return b; }
-	int get_c() override { return c; }
-	int get_A() override { return A; }
-	int get_B() override { return B; }
-	int get_C() override { return C; }
+	void print_info() override {
+		cout << get_name() << ":\nСтороны: a=" << a << " b=" << b << " c=" << c <<
+			"\nУглы: A=" << A << " B=" << B << " C=" << C << "\n\n";
+	}
 };
 
 class Equilateral_Triangle :public Triangle {
@@ -101,19 +85,17 @@ public:
 	string get_name() {
 		return name;
 	}
-	int get_a() override { return a; }
-	int get_b() override { return b; }
-	int get_c() override { return c; }
-	int get_A() override { return A; }
-	int get_B() override { return B; }
-	int get_C() override { return C; }
+	void print_info() override {
+		cout << get_name() << ":\nСтороны: a=" << a << " b=" << b << " c=" << c <<
+			"\nУглы: A=" << A << " B=" << B << " C=" << C << "\n\n";
+	}
 };
 
 class Quadrangle :public Figure {
 	int a, b, c, d, A, B, C, D;
 public:
 	Quadrangle() {}
-	string get_name() override { return name; }
+	string get_name() { return name; }
 	Quadrangle(string name1, int new_a, int new_b, int new_c, int new_d, int new_A, int new_B, int new_C, int new_D) {
 		name = name1;
 		a = new_a;
@@ -125,21 +107,17 @@ public:
 		C = new_C;
 		D = new_D;
 	}
-	int get_a() override { return a; }
-	int get_b() override { return b; }
-	int get_c() override { return c; }
-	int get_d() override { return d; }
-	int get_A() override { return A; }
-	int get_B() override { return B; }
-	int get_C() override { return C; }
-	int get_D() override { return D; }
+	virtual void print_info() {
+		cout << get_name() << ":\nСтороны: a=" << a << " b=" << b << " c=" << c<<" d= "<<d
+			<< "\nУглы: A=" << A << " B=" << B << " C=" << C <<" D="<<D << "\n\n";
+	}
 };
 
 class Parallelogram :public Quadrangle {
 	int a, b, c, d, A, B, C, D;
 public:
 	Parallelogram() {}
-	string get_name() override { return name; }
+	string get_name()  { return name; }
 	Parallelogram(string name1, int new_a, int new_b, int new_A, int new_B) {
 		name = name1;
 		a = c =  new_a;
@@ -147,89 +125,61 @@ public:
 		A = C = new_A;
 		B = D = new_B;
 	}
-	int get_a() override { return a; }
-	int get_b() override { return b; }
-	int get_c() override { return c; }
-	int get_d() override { return d; }
-	int get_A() override { return A; }
-	int get_B() override { return B; }
-	int get_C() override { return C; }
-	int get_D() override { return D; }
+	void print_info() override {
+		cout << get_name() << ":\nСтороны: a=" << a << " b=" << b << " c=" << c << " d= " << d
+			<< "\nУглы: A=" << A << " B=" << B << " C=" << C << " D=" << D << "\n\n";
+	}
 };
 
 class Rectangle :public Parallelogram {
 	int a, b, c, d, A, B, C, D;
 public:
 	Rectangle() {}
-	string get_name() override { return name; }
+	string get_name() { return name; }
 	Rectangle(string name1, int new_a, int new_b, int new_A) {
 		name = name1;
 		a = c = new_a;
 		b = d = new_b;
 		A = B = C = D = new_A;
-		;
 	}
-	int get_a() override { return a; }
-	int get_b() override { return b; }
-	int get_c() override { return c; }
-	int get_d() override { return d; }
-	int get_A() override { return A; }
-	int get_B() override { return B; }
-	int get_C() override { return C; }
-	int get_D() override { return D; }
+	void print_info() override {
+		cout << get_name() << ":\nСтороны: a=" << a << " b=" << b << " c=" << c << " d= " << d
+			<< "\nУглы: A=" << A << " B=" << B << " C=" << C << " D=" << D << "\n\n";
+	}
 };
 
 class Rhombus :public Parallelogram {
 	int a, b, c, d, A, B, C, D;
 public:
 	Rhombus() {}
-	string get_name() override { return name; }
+	string get_name() { return name; }
 	Rhombus(string name1, int new_a, int new_A, int new_B) {
 		name = name1;
 		a = c = b = d = new_a;
 		A = C = new_A;
 		B = D = new_B;
 	}
-	int get_a() override { return a; }
-	int get_b() override { return b; }
-	int get_c() override { return c; }
-	int get_d() override { return d; }
-	int get_A() override { return A; }
-	int get_B() override { return B; }
-	int get_C() override { return C; }
-	int get_D() override { return D; }
+	void print_info() override {
+		cout << get_name() << ":\nСтороны: a=" << a << " b=" << b << " c=" << c << " d= " << d
+			<< "\nУглы: A=" << A << " B=" << B << " C=" << C << " D=" << D << "\n\n";
+	}
 };
 
 class Square :public Rhombus {
 	int a, b, c, d, A, B, C, D;
 public:
 	Square() {}
-	string get_name() override { return name; }
+	string get_name() { return name; }
 	Square(string name1, int new_a) {
 		name = name1;
 		a = c = b = d = new_a;
 		A = C = B = D = 90;
 	}
-	int get_a() override { return a; }
-	int get_b() override { return b; }
-	int get_c() override { return c; }
-	int get_d() override { return d; }
-	int get_A() override { return A; }
-	int get_B() override { return B; }
-	int get_C() override { return C; }
-	int get_D() override { return D; }
+	void print_info() override {
+		cout << get_name() << ":\nСтороны: a=" << a << " b=" << b << " c=" << c << " d= " << d
+			<< "\nУглы: A=" << A << " B=" << B << " C=" << C << " D=" << D << "\n\n";
+	}
 };
-
-void print_info_quadrangle(Figure* figure) {
-	cout << figure->get_name() << ":\nСтороны: a="<<figure->get_a()<<" b=" << figure->get_b() << " c=" << figure->get_c()
-		<< " d=" << figure->get_d() <<"\nУглы: A="<<figure->get_A() << " B=" << figure->get_B()<< 
-		" C=" << figure->get_C() << " D=" << figure->get_D() <<"\n\n";
-}
-
-void print_info_triangle(Figure* figure) {
-	cout << figure->get_name() << ":\nСтороны: a=" << figure->get_a() << " b=" << figure->get_b() << " c=" << figure->get_c()
-	<< "\nУглы: A=" << figure->get_A() << " B=" << figure->get_B() <<" C=" << figure->get_C() << "\n\n";
-}
 
 int main() {
 	setlocale(LC_ALL, "rus");
@@ -242,14 +192,15 @@ int main() {
 	Rectangle rectangle("Прямоугольник",10,20,90);
 	Rhombus rhombus("Ромб", 30, 30, 40);
 	Square square("Квадрат", 20);
-	print_info_triangle(&triangle);
-	print_info_triangle(&r_t);
-	print_info_triangle(&i_t);
-	print_info_triangle(&e_t);
-	print_info_quadrangle(&quadrangle);
-	print_info_quadrangle(&rectangle);
-	print_info_quadrangle(&square);
-	print_info_quadrangle(&parallelogram);
-	print_info_quadrangle(&rhombus);
+
+	triangle.print_info();
+	r_t.print_info();
+	i_t.print_info();
+	e_t.print_info();
+	quadrangle.print_info();
+	rectangle.print_info();
+	square.print_info();
+	parallelogram.print_info();
+	rhombus.print_info();
 	return 0;
 }
