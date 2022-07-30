@@ -7,6 +7,9 @@ protected:
 	string name;
 public:
 	string get_name() {return name;}
+	virtual void print_info() {
+		cout << get_name() << "\n";
+	}
 };
 
 class Triangle :public Figure {
@@ -23,7 +26,7 @@ public:
 		B = new_B;
 		C = new_C;
 	}
-	virtual void print_info() {
+	void print_info() override {
 		cout << get_name() << ":\nСтороны: a="<<a<<" b=" << b << " c=" << c
 		<<"\nУглы: A="<< A << " B=" << B <<" C=" << C << "\n\n";
 	}
@@ -107,7 +110,7 @@ public:
 		C = new_C;
 		D = new_D;
 	}
-	virtual void print_info() {
+	void print_info() override {
 		cout << get_name() << ":\nСтороны: a=" << a << " b=" << b << " c=" << c<<" d= "<<d
 			<< "\nУглы: A=" << A << " B=" << B << " C=" << C <<" D="<<D << "\n\n";
 	}
@@ -181,6 +184,12 @@ public:
 	}
 };
 
+
+
+void print(Figure* figure) {
+	figure->print_info();
+}
+
 int main() {
 	setlocale(LC_ALL, "rus");
 	Triangle triangle("Треугольник", 10, 20, 30, 50, 60, 70);
@@ -193,14 +202,14 @@ int main() {
 	Rhombus rhombus("Ромб", 30, 30, 40);
 	Square square("Квадрат", 20);
 
-	triangle.print_info();
-	r_t.print_info();
-	i_t.print_info();
-	e_t.print_info();
-	quadrangle.print_info();
-	rectangle.print_info();
-	square.print_info();
-	parallelogram.print_info();
-	rhombus.print_info();
+	print(&triangle);
+	print(&r_t);
+	print(&i_t);
+	print(&e_t);
+	print(&quadrangle);
+	print(&rectangle);
+	print(&square);
+	print(&parallelogram);
+	print(&rhombus);
 	return 0;
 }
