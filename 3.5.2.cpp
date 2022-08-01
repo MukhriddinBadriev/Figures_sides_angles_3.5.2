@@ -11,12 +11,13 @@ public:
 		cout << get_name() << "\n";
 	}
 };
-
+/*•	Метод get_name в наследниках вам не нужен, он уже есть в базовом классе
+•	Переопределять метод, когда реализация ничем не отличается не нужно
+*/
 class Triangle :public Figure {
 	int a, b, c, A, B, C;
 public:
 	Triangle(){}
-	string get_name() {return name;}
 	Triangle(string name1,int new_a, int new_b, int new_c, int new_A, int new_B, int new_C){
 		name = name1;
 		a = new_a;
@@ -98,7 +99,6 @@ class Quadrangle :public Figure {
 	int a, b, c, d, A, B, C, D;
 public:
 	Quadrangle() {}
-	string get_name() { return name; }
 	Quadrangle(string name1, int new_a, int new_b, int new_c, int new_d, int new_A, int new_B, int new_C, int new_D) {
 		name = name1;
 		a = new_a;
